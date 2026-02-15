@@ -4,19 +4,18 @@
 // Official Clash of Clans Public API (read-only)
 // Supports: Player, Clan, War endpoints
 // Features: Rate-limit safe retry, offline cache,
-//           CORS proxy support, multi-account
+//           own Vercel serverless proxy (no CORS),
+//           multi-account
 // ============================================
 
-// ─── CORS Proxy List (fallback order) ──────────────────
-// Community CORS proxies don't need API tokens — they
-// handle authentication internally. We try each one in
-// order until one responds.
-const PROXY_LIST = [
-  'https://cocproxy.royaleapi.dev/v1',
-  'https://api.clashofclans.com/v1',       // official (needs token)
-];
-
-const DEFAULT_BASE_URL = PROXY_LIST[0];
+// ─── API Base URL ──────────────────────────────────────
+// Uses our own Vercel serverless proxy at /api/coc/
+// This avoids all CORS issues — requests go to the same domain,
+// and the serverless function adds the Bearer token server-side.
+//
+// In dev mode, Vite proxy can be configured, or you can use
+// the env var to override.
+const DEFAULT_BASE_URL = '/api/coc';
 
 function getBaseUrl() {
   return import.meta.env.VITE_COC_API_BASE || DEFAULT_BASE_URL;
@@ -27,13 +26,13 @@ function getApiToken() {
 }
 
 /**
- * Check if current base URL is a CORS proxy.
- * CORS proxies handle auth internally — we must NOT send
- * our own Authorization header or they may reject us.
+ * Check if using our own serverless proxy (/api/coc).
+ * When using our proxy, the token is added server-side —
+ * no need to send it from the browser.
  */
 function isUsingProxy() {
   const base = getBaseUrl().toLowerCase();
-  return !base.includes('api.clashofclans.com');
+  return base.startsWith('/api/') || !base.includes('api.clashofclans.com');
 }
 
 // ─── Rate Limit State ──────────────────────────────────

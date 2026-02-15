@@ -1,0 +1,29 @@
+{
+  "name": "Clash Intelligence Pro",
+  "short_name": "ClashIntel",
+  "description": "Advanced Clash of Clans Companion – Strategic analytics, upgrade planning, war intelligence & AI-powered strategy.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0F172A",
+  "background_color": "#0F172A",
+  "dir": "ltr",
+  "lang": "en-US",
+  "categories": ["games", "utilities", "productivity"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

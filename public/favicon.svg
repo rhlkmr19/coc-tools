@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2E1A47"/>
+      <stop offset="100%" style="stop-color:#0F172A"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5D76E"/>
+      <stop offset="50%" style="stop-color:#D4AF37"/>
+      <stop offset="100%" style="stop-color:#AA8C2C"/>
+    </linearGradient>
+    <linearGradient id="goldShine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5D76E;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="innerShadow">
+      <feOffset dx="0" dy="2"/>
+      <feGaussianBlur stdDeviation="3"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feFlood flood-color="#000" flood-opacity="0.3"/>
+      <feComposite operator="in" in2="A"/>
+      <feComposite operator="over" in="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="230" fill="none" stroke="url(#gold)" stroke-width="6" opacity="0.6"/>
+  <circle cx="256" cy="256" r="215" fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.3"/>
+
+  <!-- Shield body -->
+  <path d="M256 90 L370 150 L370 290 Q370 380 256 430 Q142 380 142 290 L142 150 Z"
+        fill="url(#bg)" stroke="url(#gold)" stroke-width="5" filter="url(#innerShadow)"/>
+
+  <!-- Shield inner highlight -->
+  <path d="M256 110 L355 163 L355 285 Q355 365 256 410 Q157 365 157 285 L157 163 Z"
+        fill="none" stroke="url(#gold)" stroke-width="2" opacity="0.4"/>
+
+  <!-- Crossed swords behind shield -->
+  <!-- Left sword -->
+  <g opacity="0.7" filter="url(#glow)">
+    <line x1="130" y1="130" x2="290" y2="340" stroke="url(#goldShine)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="120" y1="145" x2="145" y2="120" stroke="url(#goldShine)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- Right sword -->
+  <g opacity="0.7" filter="url(#glow)">
+    <line x1="382" y1="130" x2="222" y2="340" stroke="url(#goldShine)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="392" y1="145" x2="367" y2="120" stroke="url(#goldShine)" stroke-width="5" stroke-linecap="round"/>
+  </g>
+
+  <!-- "CI" monogram -->
+  <text x="256" y="275" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-weight="900" font-size="120" fill="url(#gold)" filter="url(#glow)">CI</text>
+
+  <!-- Stars at top of shield -->
+  <g fill="url(#gold)" opacity="0.9">
+    <polygon points="256,105 261,118 275,118 264,126 268,139 256,131 244,139 248,126 237,118 251,118" />
+  </g>
+
+  <!-- Bottom accent line -->
+  <line x1="180" y1="440" x2="332" y2="440" stroke="url(#gold)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- PRO text -->
+  <text x="256" y="465" text-anchor="middle" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif"
+        font-weight="700" font-size="32" fill="url(#gold)" letter-spacing="12" opacity="0.8">PRO</text>
+</svg>

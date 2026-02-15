@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+
+    <!-- Primary Meta -->
+    <title>Clash Intelligence Pro</title>
+    <meta name="description" content="Advanced Clash of Clans Companion – Strategic analytics, upgrade planning, war intelligence & AI-powered strategy recommendations." />
+    <meta name="author" content="Clash Intelligence Pro" />
+
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#0F172A" />
+    <meta name="background-color" content="#0F172A" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ClashIntel" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Clash Intelligence Pro" />
+    <meta name="msapplication-TileColor" content="#0F172A" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Preconnect to APIs -->
+    <link rel="preconnect" href="https://api.clashofclans.com" crossorigin />
+    <link rel="preconnect" href="https://openrouter.ai" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts – Roboto (MUI default) + Orbitron (accent headings) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Orbitron:wght@400;600;700;900&display=swap"
+    />
+
+    <style>
+      /* Critical inline styles – splash background to prevent white flash */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body, #root {
+        width: 100%;
+        min-height: 100dvh;
+        background-color: #0F172A;
+        color: #E2E8F0;
+        font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-tap-highlight-color: transparent;
+      }
+      /* Pre-render splash indicator */
+      #root:empty::after {
+        content: '';
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 48px;
+        height: 48px;
+        margin: -24px 0 0 -24px;
+        border: 4px solid rgba(212, 175, 55, 0.2);
+        border-top-color: #D4AF37;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      /* Scrollbar styling */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, 0.3); border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(212, 175, 55, 0.5); }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <div style="display:flex;align-items:center;justify-content:center;min-height:100dvh;background:#0F172A;color:#D4AF37;font-family:Roboto,sans-serif;padding:2rem;text-align:center;">
+        <div>
+          <h1 style="font-size:1.5rem;margin-bottom:1rem;">Clash Intelligence Pro</h1>
+          <p>JavaScript is required to run this application. Please enable it in your browser settings.</p>
+        </div>
+      </div>
+    </noscript>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
